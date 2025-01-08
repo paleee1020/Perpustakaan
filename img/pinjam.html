@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Peminjaman Buku</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      label {
+        margin-bottom: 8px;
+        font-weight: bold;
+      }
+
+      input {
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+
+      button {
+        padding: 10px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      #loanDetails {
+        margin-top: 30px;
+        padding: 15px;
+        background-color: #e8f5e9;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Form Peminjaman Buku</h1>
+      <form id="loanForm">
+        <label for="name">Nama Peminjam:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="bookTitle">Judul Buku:</label>
+        <input type="text" id="bookTitle" name="bookTitle" required />
+
+        <label for="borrowDate">Tanggal Pinjam:</label>
+        <input type="date" id="borrowDate" name="borrowDate" required />
+
+        <label for="returnDate">Tanggal Kembali:</label>
+        <input type="date" id="returnDate" name="returnDate" required />
+
+        <button type="submit">Ajukan Peminjaman</button>
+      </form>
+
+      <div id="loanDetails" style="display: none">
+        <h2>Detail Peminjaman</h2>
+        <p id="loanInfo"></p>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("loanForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const name = document.getElementById("name").value;
+          const bookTitle = document.getElementById("bookTitle").value;
+          const borrowDate = document.getElementById("borrowDate").value;
+          const returnDate = document.getElementById("returnDate").value;
+
+          const loanInfo = `
+        Nama Peminjam: ${name} <br>
+        Judul Buku: ${bookTitle} <br>
+        Tanggal Pinjam: ${borrowDate} <br>
+        Tanggal Kembali: ${returnDate}
+      `;
+
+          document.getElementById("loanInfo").innerHTML = loanInfo;
+          document.getElementById("loanDetails").style.display = "block";
+
+          // Clear the form after submission
+          document.getElementById("loanForm").reset();
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Halaman Logout</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-image: url("img/bg.jpg");
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        color: white;
+        text-align: center;
+      }
+
+      .container {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+      }
+
+      h2 {
+        margin-bottom: 20px;
+      }
+
+      p {
+        margin-bottom: 20px;
+      }
+
+      button {
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Logout Berhasil</h2>
+      <p>
+        Anda telah berhasil logout. Anda akan diarahkan kembali ke halaman
+        login.
+      </p>
+    </div>
+
+    <script>
+      // Mengarahkan pengguna ke halaman login setelah 3 detik
+      setTimeout(() => {
+        window.location.href = "login.html"; // Ganti dengan nama file halaman login Anda
+      }, 3000);
+    </script>
+  </body>
+</html>

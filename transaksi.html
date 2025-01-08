@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transaksi</title>
+
+    <!-- My Style -->
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body>
+    <header>
+      <img src="img/LOGO.png" alt="Logo Perpustakaan" class="logo" />
+      <nav>
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="transaksi.html">Transaksi</a></li>
+          <li><a href="profil.html">Profil</a></li>
+          <li><a href="koleksi.html">Koleksi Buku</a></li>
+          <li><a href="logout.html">Logout</a></li>
+          <!-- Tombol Logout -->
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container">
+      <h1>Transaksi Peminjaman dan Pengembalian Buku</h1>
+      <form id="transaction-form">
+        <label for="book-title">Judul Buku:</label>
+        <select id="book-title" name="book-title" required>
+          <option value="">Pilih Judul Buku</option>
+          <option value="Panduan Belajar JAVASCRIPT untuk pemula">
+            Panduan Belajar JAVASCRIPT untuk pemula
+          </option>
+          <option value="CSS untuk pemula">CSS untuk pemula</option>
+          <option value="111 kode HTML">111 kode HTML</option>
+          <option value="Logika pemograman menggunakan C++">
+            Logika pemograman menggunakan C++
+          </option>
+          <option value="Sebuah seni untuk bersikap BODOAMAT">
+            Sebuah seni untuk bersikap BODOAMAT
+          </option>
+          <option value="Hujan">Hujan</option>
+          <option value="Di antara dua SUJUD">Di antara dua SUJUD</option>
+          <option value="99 cahaya di langit EROPA">
+            99 cahaya di langit EROPA
+          </option>
+        </select>
+
+        <label for="name">Nama Peminjam:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="transaction-type">Tipe Transaksi:</label>
+        <select id="transaction-type" name="transaction-type">
+          <option value="pinjam">Peminjaman</option>
+          <option value="kembali">Pengembalian</option>
+        </select>
+
+        <label for="transaction-date">Tanggal Transaksi:</label>
+        <input
+          type="date"
+          id="transaction-date"
+          name="transaction-date"
+          required
+        />
+
+        <label for="return-date">Tanggal Pengembalian:</label>
+        <input type="date" id="return-date" name="return-date" />
+
+        <button type="submit">Simpan</button>
+      </form>
+
+      <h2>Daftar Transaksi</h2>
+      <ul id="transaction-list">
+        <li>
+          Peminjaman: Sebuah seni untuk bersikap BODOAMAT oleh Ali (Tanggal:
+          2025-01-05)
+        </li>
+        <li>
+          Pengembalian: Di antara dua SUJUD oleh Budi (Tanggal: 2025-01-06)
+        </li>
+      </ul>
+    </div>
+
+    <!-- Script to handle transaction submission -->
+    <script>
+      const form = document.getElementById("transaction-form");
+      const transactionList = document.getElementById("transaction-list");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const bookTitle = document.getElementById("book-title").value;
+        const name = document.getElementById("name").value;
+        const transactionType =
+          document.getElementById("transaction-type").value;
+        const transactionDate =
+          document.getElementById("transaction-date").value;
+        const returnDate = document.getElementById("return-date").value;
+
+        let transactionText = `${
+          transactionType === "pinjam" ? "Peminjaman" : "Pengembalian"
+        }: ${bookTitle} oleh ${name} (Tanggal: ${transactionDate}`;
+
+        if (transactionType === "pinjam" && returnDate) {
+          transactionText += `, Tanggal Pengembalian: ${returnDate}`;
+        }
+
+        transactionText += ")";
+
+        const listItem = document.createElement("li");
+        listItem.textContent = transactionText;
+        transactionList.appendChild(listItem);
+
+        form.reset();
+      });
+    </script>
+  </body>
+</html>
